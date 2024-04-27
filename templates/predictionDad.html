@@ -1,0 +1,108 @@
+<!-- Website for Dads Football -->
+
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<title>Goodwin Football</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+	<!-- JavaScript file -->
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class='scrolldown-container'>
+		<h1 class="logo"><a href="GoodwinFootball.html" class='logo-link'>The Bell House Premier League</a></h1>
+	</div>
+	<h2>Sam</h2>
+	<div class="everything-container"> 
+		<h2 class="prediction-header">Enter your predictions for the next 5 games:</h2>
+		<br>
+		<h3 class='match-date'>Saturday 6th April</h3>
+		<br>
+		<div class='match-predictions-table'>
+			<table>
+			    <tr>
+			        <th> </th>
+			        <th>Home Team</th>
+			        <th>Prediction</th>
+			        <th>Away Team</th>
+			        <th> </th>
+			    </tr>
+			    <tr>
+			        <td><img src='logos/unitedlogo.jpg' class='team-logo'></td>
+			        <td><p>Manchester United</p></td>
+			        <td>
+			            <select id="predictionOne">
+			                <option value='...'>v</option>
+			                <option value='homeWin'>Home Win</option>
+			                <option value='draw'>Draw</option>
+			                <option value='awayWin'>Away Win</option>
+			            </select>
+			        </td>
+			        <td><p>Liverpool</p></td>
+			        <td><img src='logos/liverpoollogo.jpg' class='team-logo'></td>
+			    </tr>
+			    <tr>
+			        <td><img src='logos/lutonlogo.jpg' class='team-logo'></td>
+			        <td><p>Luton Town</p></td>
+			        <td>
+			            <select id="predictionTwo">
+			                <option value='...'>v</option>
+			                <option value='homeWin'>Home Win</option>
+			                <option value='draw'>Draw</option>
+			                <option value='awayWin'>Away Win</option>
+			            </select>
+			        </td>
+			        <td><p>Bournemouth</p></td>
+			        <td><img src='logos/bournemouthlogo.jpg' class='team-logo'></td>
+			    </tr>
+			    <tr>
+			        <td><img src='logos/villalogo.jpg' class='team-logo'></td>
+			        <td><p>Aston Villa</p></td>
+			        <td>
+			            <select id="predictionThree">
+			                <option value='...'>v</option>
+			                <option value='homeWin'>Home Win</option>
+			                <option value='draw'>Draw</option>
+			                <option value='awayWin'>Away Win</option>
+			            </select>
+			        </td>
+			        <td><p>Brentford</p></td>
+			        <td><img src='logos/brentfordlogo.jpg' class='team-logo'></td>
+			    </tr>
+			    <tr>
+			        <td><img src='logos/palacelogo.jpg' class='team-logo'></td>
+			        <td><p>Crystal Palace</p></td>
+			        <td>
+			            <select id="predictionFour">
+			                <option value='...'>v</option>
+			                <option value='homeWin'>Home Win</option>
+			                <option value='draw'>Draw</option>
+			                <option value='awayWin'>Away Win</option>
+			            </select>
+			        </td>
+			        <td><p>Manchester City</p></td>
+			        <td><img src='logos/citylogo.jpg' class='team-logo'></td>
+			    </tr>
+			    <tr>
+			        <td><img src='logos/brightonlogo.jpg' class='team-logo'></td>
+			        <td><p>Brighton</p></td>
+			        <td>
+			            <select id="predictionFive">
+			                <option value='...'>v</option>
+			                <option value='homeWin'>Home Win</option>
+			                <option value='draw'>Draw</option>
+			                <option value='awayWin'>Away Win</option>
+			            </select>
+			        </td>
+			        <td><p>Arsenal</p></td>
+			        <td><img src='logos/arsenallogo.jpg' class='team-logo'></td>
+			    </tr>
+			</table>
+
+			<button onclick="saveResponses()">Submit</button>
+		</div>
+	</div>

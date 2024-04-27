@@ -1,0 +1,105 @@
+<!-- Registration page -->
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Goodwin Football</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+	<script src='script.js' defer></script>
+</head>
+<body>
+	<div class='scrolldown-container'>
+		<div class="imageContainerHomeScroller">
+			<img src="static/logo.png" alt="Main Logo">
+		</div>
+		<div class="contentContainer">
+			<div class="topStuffLad">
+				<div class='title'>
+					<h1 class='logo'><a href='/' class='logo-link'>The Bell House Premier League</a></h1>
+				</div>
+				<div class="helloThere">
+					<div class="homepageTest">
+						{% if 'username' in session %}
+							<div class='usergreeting'>
+								<h2 class='middling'>WELCOME {{ username.upper() }}</h2>
+							</div>
+							<div class='logout'>
+								<h2 class='loginlink'><a href='/logout' class='toplinkz'>LOGOUT</a></h2>
+							</div>
+						{% else %}
+						<div class='registration'>
+							<h2 class='loginlink'><a href='/login-page' class='toplinkz'>LOGIN</a></h2>
+							<h2 class='loginlink'><a href='/registration-page' class='toplinkz'>REGISTER</a></h2>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="bottomStuff">
+				<h2 class="registerlink"><a href='/'>Home</a></h2>
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/predict'>Predictions</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Predictions</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/leagueTable'>Table</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Table</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/fixtures'>Fixtures</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Fixtures</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/results'>Results</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Results</a></h2>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="everything-container">
+		<div class="secondary-everything-container">
+			<br>
+			<br>
+			<h2 class='newUserTitle'>NEW USER REGISTRATION</h2>
+			<br>
+			<br>
+			<br>
+			<div class='registration-form'>
+				<form action='/register' method='POST'>
+					<label for='username' class='form-text'>Create a username!<br></label>
+					<input type='text' id='username' name='username' class='regforminput' placeholder='Enter your username' required><br><br><br><br><br>
+
+					<label for='password' class='form-text'>Password:<br></label>
+					<input type='text' id='passwordOne' name='passwordOne' class='regforminput' placeholder='Enter password here' required><br><br>
+
+					<label for='passwordTwo' class='form-text'>Please confirm password:<br></label>
+					<input type='text' id='passwordTwo' name='passwordTwo' class='regforminput' placeholder='Confirm your password' required><br><br>
+					<br><br>
+
+					<input type='submit' value='Register' class='registerbutton'>
+					<br>
+					{% if error %}
+    				<p class='password-error'>{{ error }}</p>
+    				{% endif %}
+					<br>
+					<br>
+					<br>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

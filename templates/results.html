@@ -1,0 +1,135 @@
+<!-- RESULTS PAGE -->
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<title>Results | GOODWIN FOOTBALL</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+	<!-- JavaScript file -->
+</head>
+<body>
+	<div class='scrolldown-container'>
+		<div class="imageContainerHomeScroller">
+			<img src="static/logo.png" alt="Main Logo">
+		</div>
+		<div class="contentContainer">
+			<div class="topStuffLad">
+				<div class='title'>
+					<h1 class='logo'><a href='/' class='logo-link'>The Bell House Premier League</a></h1>
+				</div>
+				<div class="helloThere">
+					<div class="homepageTest">
+						{% if 'username' in session %}
+							<div class='usergreeting'>
+								<h2 class='middling'>WELCOME {{ username.upper() }}</h2>
+							</div>
+							<div class='logout'>
+								<h2 class='loginlink'><a href='/logout' class='toplinkz'>LOGOUT</a></h2>
+							</div>
+						{% else %}
+						<div class='registration'>
+							<h2 class='loginlink'><a href='/login-page' class='toplinkz'>LOGIN</a></h2>
+							<h2 class='loginlink'><a href='/registration-page' class='toplinkz'>REGISTER</a></h2>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="bottomStuff">
+				<h2 class="registerlink"><a href='/'>Home</a></h2>
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/predict'>Predictions</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Predictions</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/leagueTable'>Table</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Table</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/fixtures'>Fixtures</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Fixtures</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="activelink"><a href='/results'>Results</a></h2>
+				{% else %}
+				<h2 class="activelink"><a href='/login-page'>Results</a></h2>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="everything-container">
+		<div class='miniHeader'>
+			<div class='headingLine'></div>
+			<br>
+			<div class='weekchanger'>
+				<button style='color:white;' onclick="minusResultWeek()" class='weekbuttons'>PREVIOUS WEEK</button>
+				<h2 class='weeknumber'>WEEK {{ weekUpdater }}</h2>
+				<button style='color:white;' onclick="addResultWeek()" class='weekbuttons'>NEXT WEEK</button>	
+			</div>
+			<br>
+			<div class='headingLine'></div>
+		</div>	
+		<div class="table-container">
+			<table>
+				<thead>
+					<tr>
+						<th style='width:300px; text-align:left; border: none;'>Home Team</th>
+						<th style='width:fit-content; border: none;'></th>
+						<th style='width:fit-content; border: none;'></th>
+                        <th style='width:fit-content; border: none;'></th>
+						<th style='width:300px; text-align:right; border: none;'>Away Team</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for result in results %}
+					<tr >
+						<td style='text-align: left; border:none; border-bottom: 2px solid #59328E;'>{{ result[0] }}</td>
+						<td style='text-align: left; border:none; border-bottom: 2px solid #59328E;'>{{ result[1] }}</td>
+                        <td style='text-align: center; font-weight:bold; border:none; border-bottom: 2px solid #59328E;'>v</td>
+                        <td style='text-align: right; border:none; border-bottom: 2px solid #59328E;'>{{ result[2] }}</td>
+						<td style='text-align: right; border:none; border-bottom: 2px solid #59328E;'>{{ result[3] }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<br>
+		<br>
+		<br>
+	</div>
+	<script>
+		function addResultWeek() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET","/addResultWeek",true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					window.location.reload();
+				}
+			};
+			xhr.send();
+		}
+
+		function minusResultWeek() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET","/minusResultWeek",true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					window.location.reload();
+				}
+			};
+			xhr.send();
+		}
+	</script>

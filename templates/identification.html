@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Goodwin Football</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="stylesheet.css">
+	<!-- JavaScript file -->
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<div class='scrolldown-container'>
+		<h1 class='logo'><a href='GoodwinFootball.html' class='logo-link'>The Bell House Premier League</a></h1>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="everything-container">
+		<h2 class="access-psheet">To access your prediction sheet, please enter your key phrase:</h2>
+		<form id="keyphraseForm" class="keyphraseForm">
+			<input type="text" id="keyphrase" class="keyphrase" placeholder="Enter keyphrase here..." required>
+			<button type="submit" id="submitButton">Enter</button>
+		</form>
+	</div>
+</body>
+
+<script>
+	document.getElementById('keyphraseForm').addEventListener('submit', function(event) {
+		event.preventDefault();
+		const enteredKeyphrase = document.getElementById('keyphrase').value;
+		const samKeyphrase = 'samiscool';
+		const dadKeyphrase = 'dadiscool';
+
+		if (enteredKeyphrase == samKeyphrase) {
+			window.location.href = 'predictionSam.html';
+		} else if (enteredKeyphrase == dadKeyphrase) {
+			window.location.href = 'predictionDad.html';
+		} else {
+			alert('Incorrect keyphrase. Please try again.'); 
+			return false;
+		}
+	});
+</script>
+
+</html>

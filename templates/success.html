@@ -1,0 +1,40 @@
+<!-- Loading page -->
+
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<title>Loading... | GOODWIN FOOTBALL</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+	<!-- JavaScript file -->
+	<script>
+		function redirectWithDelay(url, delay) {
+			setTimeout(function() {
+				window.location.href = '/';
+			}, delay);
+		}
+
+		window.onload = function() {
+			redirectWithDelay('/',5000)
+			showLoader();
+		};
+
+		function showLoader() {
+			document.getElementById("loading-circle").style.display = "block";
+		}
+
+		function hideLoader() {
+			document.getElementById("loading-circle").style.display = "none";
+		}
+		
+	</script>
+</head>
+<body>
+	<h1 class='successtext'>Please wait...</h1>
+	<div id='loading-circle'>
+		<div id="loader"></div>
+	</div>
+</body>

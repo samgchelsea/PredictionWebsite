@@ -1,0 +1,193 @@
+<!-- Homepage for Dads Football -->
+
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, inital-scale=1.0">
+	<title>Homepage | GOODWIN FOOTBALL</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+	<!-- JavaScript file -->
+</head>
+<body>
+	<div class='scrolldown-container'>
+		<div class="imageContainerHomeScroller">
+			<img src="static/logo.png" alt="Main Logo">
+		</div>
+		<div class="contentContainer">
+			<div class="topStuffLad">
+				<div class='title'>
+					<h1 class='logo'><a href='/' class='logo-link'>The Bell House Premier League</a></h1>
+				</div>
+				<div class="helloThere">
+					<div class="homepageTest">
+						{% if 'username' in session %}
+							<div class='usergreeting'>
+								<h2 class='middling'>WELCOME {{ username.upper() }}</h2>
+							</div>
+							<div class='logout'>
+								<h2 class='loginlink'><a href='/logout' class='toplinkz'>LOGOUT</a></h2>
+							</div>
+						{% else %}
+						<div class='registration'>
+							<h2 class='loginlink'><a href='/login-page' class='toplinkz'>LOGIN</a></h2>
+							<h2 class='loginlink'><a href='/registration-page' class='toplinkz'>REGISTER</a></h2>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="bottomStuff">
+				<h2 class="activelink"><a href='/'>Home</a></h2>
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/predict'>Predictions</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Predictions</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/leagueTable'>Table</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Table</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/fixtures'>Fixtures</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Fixtures</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/results'>Results</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Results</a></h2>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="everything-container">
+		<br>
+		<br>
+		<br>
+		<div class="update">
+			<h1>Update</h1>
+			<p>Sorry for the delay! These are the final league scores from the weekend. AFC Dave and Leeds the League drew the top of the table clash, but leaders Derby Cockney Rams could not take advantage as they only drew, whilst 4th placed Murder on Zidane's Floor.... lost. Remains tight at the bottom, Samchester United and Danchester City both won and are leading the bottom pack, but Ancoat Lionesses slip into bottom 3.</p>
+		</div>
+		<br>
+		<br>
+		<br>
+		<div class="comment-container">
+			<h1>The Dugout</h1>
+			<div id="comment-space" class="comment-space" style="height:165px; overflow-y: auto;">
+				{% for comment in comments %}
+				<div class="comment-info">
+					<p style="color:rgb(0, 87, 12); font-size:12px; font-weight:bold;">{{ comment[0] }} <span style="color:rgb(143, 143, 143); font-size:12px; font-weight:normal;">{{ comment[2] }}</span></p>
+				</div>
+				<div class="comment-text">
+					<p>{{ comment[1] }}</p>
+				</div>
+				<div class="commentline"></div>
+				{% endfor %}
+			</div>
+			<div class="form-container">
+				<form action="/addComment" method="post" class="comment-form"> 
+					<textarea style="width:500px; margin-right:20px; font-family:Tahoma; font-size:12px; color:rgb(56, 0, 116);" class="comment-textarea" id="comment" name="comment" rows="1" cols="50"></textarea>
+					<input type="submit" value="Submit" class="comment-button">
+				</form>
+			</div>
+		</div>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<div class='alignmentContainer'>
+			<div class="topleft">
+				<br>
+				<table>
+					<thead>
+						<tr>
+							<th>Pos</th>
+							<th>Team Name</th>
+							<th>Pl</th>
+							<th>GD</th>
+							<th>Pts</th>
+						</tr>
+					</thead>
+					<tbody>
+							{% for homepageRow in homepageRows %}
+							<tr>
+								<td>{{ homepageRow[0] }}</td>
+								<td style="text-align:left">{{ homepageRow[1] }}</td>
+								<td>{{ homepageRow[2] }}</td>
+								<td>{{ homepageRow[3] }}</td>
+								<td style="font-weight:bold">{{ homepageRow[4] }}</td>
+							</tr>
+							{% endfor %}					
+					</tbody>
+				</table>
+			</div>
+			<div class="topright">
+				<h2>Matchweek {{ weekUpdater }}</h2>
+				<table>
+					<thead>
+						<tr>
+							<th style='width:fit-content; padding:5px; text-align:left; padding-left:20px;'>Home Team</th>
+							<th></th>
+							<th style='width:fit-content; padding:5px; text-align:right;padding-right:20px;'>Away Team</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for fixture in fixtures %}
+						<tr >
+							<td style='text-align: left; border:none; padding-right:15px; border-bottom: 2px solid #59328E;'>{{ fixture[0] }}</td>
+							<td style='font-weight:bold; text-align: center; border:none; padding:5px; border-bottom: 2px solid #59328E;'>v</td>
+							<td style='text-align: right; border:none; padding-left:15px; border-bottom: 2px solid #59328E;'>{{ fixture[1] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class="bottomright">
+				<table>
+					<thead>
+						<tr>
+							<th style='width:fit-content; padding:5px; text-align:left; padding-left:20px;'>Home Team</th>
+							<th style='border: none;'></th>
+							<th style='border: none;'></th>
+							<th style='width:fit-content; padding:5px; text-align:right;padding-right:20px;'>Away Team</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for homeResult in homeResults %}
+						<tr >
+							<td style='text-align: left; border:none; padding-right:15px; border-bottom: 2px solid #59328E;'>{{ homeResult[0] }}</td>
+							<td style='font-weight:bold; text-align: center; border:none; padding:5px; border-bottom: 2px solid #59328E;'>{{ homeResult[1] }}</td>
+							<td style='font-weight:bold; text-align: center; border:none; padding:5px; border-bottom: 2px solid #59328E;'>{{ homeResult[2] }}</td>
+							<td style='text-align: right; border:none; padding-left:15px; border-bottom: 2px solid #59328E;'>{{ homeResult[3] }}</td>
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<script>
+		window.addEventListener('load', function() {
+			var commentSpace = document.getElementById('comment-space');
+			commentSpace.scrollTop = commentSpace.scrollHeight;
+		});
+	</script>
+</body>
+</html>

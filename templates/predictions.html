@@ -1,0 +1,173 @@
+<!-- Page for users to enter predictions -->
+<!DOCTYPE HTML>
+
+<html lang = "en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Predictions | GOODWIN FOOTBALL</title>
+	<!-- Stylesheet -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+</head>
+<body>
+	<div class='scrolldown-container'>
+		<div class="imageContainerHomeScroller">
+			<img src="static/logo.png" alt="Main Logo">
+		</div>
+		<div class="contentContainer">
+			<div class="topStuffLad">
+				<div class='title'>
+					<h1 class='logo'><a href='/' class='logo-link'>The Bell House Premier League</a></h1>
+				</div>
+				<div class="helloThere">
+					<div class="homepageTest">
+						{% if 'username' in session %}
+							<div class='usergreeting'>
+								<h2 class='middling'>WELCOME {{ username.upper() }}</h2>
+							</div>
+							<div class='logout'>
+								<h2 class='loginlink'><a href='/logout' class='toplinkz'>LOGOUT</a></h2>
+							</div>
+						{% else %}
+						<div class='registration'>
+							<h2 class='loginlink'><a href='/login-page' class='toplinkz'>LOGIN</a></h2>
+							<h2 class='loginlink'><a href='/registration-page' class='toplinkz'>REGISTER</a></h2>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			<div class="bottomStuff">
+				<h2 class="registerlink"><a href='/'>Home</a></h2>
+				{% if 'username' in session %} 
+				<h2 class="activelink"><a href='/predict'>Predictions</a></h2>
+				{% else %}
+				<h2 class="activelink"><a href='/login-page'>Predictions</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/leagueTable'>Table</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Table</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/fixtures'>Fixtures</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Fixtures</a></h2>
+				{% endif %}
+				{% if 'username' in session %} 
+				<h2 class="registerlink"><a href='/results'>Results</a></h2>
+				{% else %}
+				<h2 class="registerlink"><a href='/login-page'>Results</a></h2>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="everything-container">
+		<div class="secondary-everything-container">
+			<div class='miniHeader'>
+				<div class='headingLine'></div>
+				<br>
+				<div class='weekchanger'>
+					<button style='color:rgb(255, 255, 255);' onclick="minusWeek()" class='weekbuttons'>PREVIOUS WEEK</button>
+					<h2 class='weeknumber'>WEEK {{ weekUpdater }}</h2>
+					<button style='color:white;' onclick="addWeek()" class='weekbuttons'>NEXT WEEK</button>	
+				</div>
+				<br>
+				<div class='headingLine'></div>
+			</div>
+			<div class='thirdBackground'>
+				<div class='prediction-form'>
+					<form  action='/submit_predictions' method='POST'>
+						{% for fixture_data in fixtures %}
+						<div class='match-container'>
+							<div class='teaminfo'>
+								<img src='static/logos/{{ fixture_data.homeTeam|lower() }}.png' alt='{{ fixture_data.homeTeam }} Logo' class='team-logo'>
+								<div class='randombutimportant'>
+									<p>{{ fixture_data.homeTeam }}</p>
+								</div>
+							</div>
+							<div class='middle'>
+								<div class='v-container'>
+									<div class='v'>
+										<p>v</p>
+									</div>
+								</div>
+								<div class='dropdown-container'>
+									<label for='predicted_score_{{ fixture_data.match_id }}'>
+										<div class='dropdownLabeller'>
+											<div class='biggerCaps'>P</div>
+											<div class='smallerCaps'>REDICTION</div>
+										</div>
+									</label><br>
+									<select id='predicted_score_{{ fixture_data.match_id }}' name='predicted_scores[]' class='dropdownpredict'  required>
+										<div class='dropdown-options'>
+											<option disabled hidden selected>...</option>
+											<option value='homeWin'>Home Win</option>
+											<option value='draw'>Draw</option>
+											<option value='awayWin'>Away Win</option>
+										</div>
+									</select>
+								</div>
+							</div>	
+							<div class='teampics'>
+								<div class='randombutimportanttwo'>
+									<p>{{ fixture_data.awayTeam}}</p>
+								</div>
+								<img src='static/logos/{{ fixture_data.awayTeam|lower() }}.png' alt='{{ fixture_data.awayTeam }} Logo' class='team-logo'>
+							</div>
+						</div>
+						<div class='predictionLine'></div>
+						{% endfor %}
+						<br>
+						<br>
+						<input type='submit' value='Submit Predictions' class='submitbutton'>
+					</form>
+					<br>
+					<br>
+					<br>
+					<br>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		function addWeek() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET","/addWeek",true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					window.location.reload();
+				}
+			};
+			xhr.send();
+		}
+
+		function minusWeek() {
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET","/minusWeek",true);
+			xhr.onreadystatechange = function() {
+				if (xhr.readyState == 4 && xhr.status == 200) {
+					window.location.reload();
+				}
+			};
+			xhr.send();
+		}
+
+		function clicktheButton(matchId) {
+			var choice = document.getElementById("predicted_score_" + matchId)
+			if (choice.value == "") {
+				alert("You need to predict the score for all the matches.");
+				return false;
+			}
+			return true;
+		}
+	</script>
+</body>
+</html>

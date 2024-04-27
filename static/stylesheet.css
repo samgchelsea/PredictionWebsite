@@ -1,0 +1,676 @@
+body {
+	background-color: #a18cff;
+}
+
+.password-error {
+	color:red;
+	font-family: tahoma;
+}
+.logo {
+	font-family: Tahoma;
+	color: white;
+	text-decoration: none;
+	font-size:24px
+}
+
+.topright h2 {
+	text-align: center;
+}
+
+.registration{
+	display:flex;
+	font-size:12px;
+}
+
+.helloThere {
+	font-size:12px;
+}
+
+.regforminput {
+	padding: 7px;
+	font-size: 16px;
+	font-family: Tahoma;
+	text-align: center;
+	border-radius: 5px;
+	width:550px;
+	font-weight: bold;
+	color: #11005f;
+}
+
+.registerbutton {
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.title {
+	margin-right:auto;
+}
+
+.activelink a{
+	color:rgba(115, 115, 115,0.8);
+	font-family: Tahoma;
+	font-size:16px;
+	padding:20px;
+	margin-right:30px;
+	margin-left:30px;
+	text-decoration: none;
+	position:relative;
+}
+
+.activelink a::after {
+	content:'';
+	position:absolute;
+	left:0;
+	bottom:-1.5px;
+	width:100%;
+	height:4px;
+	background:linear-gradient(to right, rgb(1, 255, 149), rgb(146, 21, 255));
+}
+
+.registerlink a{
+	color:rgba(115, 115, 115,0.8);
+	font-family: Tahoma;
+	font-size:16px;
+	padding:20px;
+	margin-right:30px;
+	margin-left:30px;
+	text-decoration: none;
+	position:relative;
+}
+
+.registerlink a::after {
+	content:'';
+	position:absolute;
+	left:0;
+	bottom:-1.5px;
+	width:100%;
+	height:0;
+	background:linear-gradient(to right, rgb(1, 255, 149), rgb(146, 21, 255));
+	visibility:hidden;
+	transition: visibility 0s, height 0.3s ease;
+}
+
+.registerlink a:hover::after {
+	visibility:visible;
+	height:4px;
+}
+
+
+.secondary-everything-container {
+	margin-top: 50px;
+	border-radius: 50px;
+}
+
+.sidelinkz, .middling{
+	color:white;
+	text-decoration:none;
+	justify-content: flex-end;
+	transition: 0.4s ease;
+	margin-right:15px;
+}
+
+.middling {
+	font-family: tahoma;
+}
+
+.sidelinkz:hover{
+	color:#992e87;
+}
+
+.promotionPlaces {
+	background-color: #93D860;
+}
+
+
+.table-container table{
+	max-height: 300px;
+	overflow: auto;
+	padding:  20px;
+	font-family: Tahoma;
+	border-collapse:  collapse;
+	padding: 20px;
+	margin: 0 auto;
+	width:50%;
+	margin-top:40px;
+}
+
+.table-container td, .table-container th {
+	border:  3px solid purple;
+	padding:  8px;
+	text-align: left;
+}
+
+.table-container th{
+	background-color:  #8C6BB8;
+	text-align: center;
+	color:white;
+}
+
+.update {
+	width: 40%;
+	margin: 0 auto;
+	text-align: center;
+	padding: 20px;
+	transition: all 0.3s ease;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+	border-radius: 10px;
+	margin-top:20px;
+}
+
+.comment-container {
+	width: 40%;
+	margin: 0 auto;
+	padding: 20px;
+	transition: all 0.3s ease;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.2);
+	border-radius: 10px;
+	margin-top:20px;
+	height: 300px;
+}
+
+.update:hover {
+	transform:scale(1.05);
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+
+.comment-space {
+	flex-direction: row;
+	align-items:flex-start;
+	margin-bottom:20px;
+}
+
+.comment-container:hover {
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+}
+
+.update h1, .comment-container h1 {
+	font-family:tahoma;
+	color:#59328E;
+}
+
+.update p, .comment-container p {
+	font-family:tahoma;
+}
+
+.comment-team {
+	color:rgb(0, 87, 12);
+	font-size:12px;
+	font-weight:bold;
+}
+
+.comment-time {
+	color:rgb(147, 147, 147);
+	font-size:12px;
+}
+
+.comment-text {
+	font-size:14px;
+	
+}
+
+.topleft {
+	position:absolute;
+	top: 350px;
+	left:100px;
+	border: 0.5px solid rgb(220,220,220);
+	border-radius:10px;
+	font-family:Tahoma;
+	font-size:14px;
+	padding-bottom:5px;
+	color:rgb(25, 17, 37);
+}
+
+.topleft thead {
+	background-color:rgb(220, 220, 220);
+	color:rgb(101, 82, 117);
+}
+
+
+.topleft td {
+	text-align:center;
+	border-bottom: 1px solid rgb(220,220,220);
+}
+
+.topright {
+	position:absolute;
+	top:250px;
+	right:100px;
+	font-family:Tahoma;
+	font-size:12px;
+	border: 0.5px solid rgb(220,220,220);
+	border-radius:10px;
+}
+
+.bottomright {
+	position:absolute;
+	top:700px;
+	right:100px;
+	font-family:Tahoma;
+	font-size:12px;
+	border: 0.5px solid rgb(220,220,220);
+	border-radius:10px;
+}
+
+.everything-container {
+	background-color: white;
+	margin-top: 250px;
+	border-radius: 50px;
+	margin:50px;
+}
+
+.prediction-select {
+	text-decoration: none;
+	color: #59328E;
+	font-family: Tahoma;
+	padding: 30px;
+	text-align: center;
+}
+
+.logo-link {
+	text-decoration: none;
+	color: white;
+	font-family: Tahoma;
+	padding: 30px;
+	text-align: center;
+	transition:3s ease;
+}
+
+
+
+.dropdown-container select {
+	font-size: 16px;
+	cursor:pointer;
+}
+
+.dropdownpredict select option {
+	font-size:14px;
+}
+
+
+
+.logo-link:hover {
+	background:linear-gradient(to left, white, #75caff);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	color:transparent;
+}
+
+
+.headingContainer {
+	padding: 0 30px;
+}
+.table-heading {
+	font-family: Tahoma;
+	color: #59328E;
+	padding: 0 30px;
+}
+
+
+.line {
+	border-bottom: 2px solid #59328E;
+	margin-bottom: 30px;
+}
+
+.predictionLine {
+	border-bottom: 2px solid #59328E;
+	margin-left:200px;
+	margin-right:200px;
+	margin-bottom:30px;
+}
+
+.headingLine {
+	border-bottom: 8px solid #59328E;
+	margin-left:200px;
+	margin-right:200px;
+}
+
+.commentline {
+	border-bottom: 0.5px solid #59328E;
+}
+
+.table-container {
+	flex:1;
+}
+
+.linkfromHPAGE {
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+.table-link {
+	padding: 15px;
+	font-family: tahoma;
+	font-size:16px;
+	justify-content: center;
+}
+
+.table-link:hover {
+	font-weight:bold;
+	text-decoration: underline;
+}
+
+.access-psheet {
+	padding: 15px;
+	color: #59328E;
+	font-family: Tahoma;
+}
+
+.keyphraseForm{
+	padding:  30px;
+}
+
+.registerbutton:hover {
+	background-color: rgba(192, 117, 217,0.5);
+	transition:5s ease;
+	transition-duration: 2s;
+	border-radius: 10px;
+}
+
+.registerbutton {
+	font-size: 16px;
+	font-family: tahoma;
+	margin-left: 250px;
+}
+
+.newUserTitle {
+	font-family: Tahoma;
+	text-align: center;
+	color: #009dff;
+	font-size:32px;
+}
+
+.keyphrase {
+	padding: 15px;
+	font-size: 24px;
+}
+
+#submitButton {
+	display: none;
+}
+
+.weekchanger {
+	display:flex;
+	text-align: center;
+	font-family: tahoma;
+	color:#59328E;
+	justify-content: center;
+	align-items: center;
+}
+
+.randombutimportant {
+	margin-left: 30px;
+}
+
+.randombutimportanttwo {
+	margin-right: 30px;
+}
+
+.miniHeader {
+	background:linear-gradient(to bottom, #59328E, rgba( 89, 50, 142, 0.75),#59328E);
+}
+
+
+.weekbuttons {
+	background-color:rgba(110, 229, 255,0.3);
+	width:200px;
+	font-size:16px;
+	font-weight:bolder;
+	height:50px;
+	border-radius: 15px;
+	border-color:transparent;
+	transition:2s ease;
+	justify-content: center;
+	margin:0 80px;
+	white-space: nowrap;
+}
+
+.weekbuttons:hover {
+	background-color: rgba(110, 229, 255, 0.65);
+	transition: 0.5s ease;
+	cursor: pointer;
+}
+.weeknumber {
+	margin:0 80px;
+	text-align: center;
+	justify-content: center;
+	color:white;
+}
+
+.miniHeader {
+	background-color: rgba(161, 140, 255, 0.7);
+	margin-left:200px;
+	margin-right:200px;
+}
+
+.prediction-header {
+	padding: 15px;
+	font-family: Tahoma;
+	color: #59328E;
+}
+
+.form-container {
+	position:absolute;
+	bottom:80px;
+	left:530px;
+	width:100%;
+	padding:10px;
+}
+
+.form-text {
+	font-family: Tahoma;
+	font-weight: bold;
+	padding:10px;
+	font-size: 18px;
+	margin-top:15px;
+}
+
+.registration-form {
+	color: #59328E;
+	margin-left: 50px;
+}
+
+.scrolldown-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	background-color: white;
+	padding: 0px;
+	z-index: 999;
+	display:flex;
+	transition: background-color 2s ease;
+	transition-duration: 2s;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+.scrolldown-container img {
+	height:140px;
+}
+
+.imageContainer {
+	flex:0 0 auto;
+	margin-right: 10px;
+}
+
+.contentContainer {
+	display:flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.topStuffLad {
+	background-color:#59328E;
+	padding:10px;
+	height:50px;
+	display:flex;
+	margin-left:20px;
+
+}
+
+.bottomStuff {
+	display:flex;
+	background-color: white;
+	padding:10px;
+	height: 50px;
+}
+
+.toplinkz {
+	font-size:18px;
+	text-decoration: none;
+	color:rgb(255, 255, 255);
+	font-family: Tahoma;
+	padding-left:150px;
+}
+
+
+
+.logout {
+	display:flex;
+}
+
+.homepageTest {
+	display:flex;
+}
+
+.submitbutton {
+	display:block;
+	margin: 0 auto;
+	margin-top:20px;
+	padding:15px 30px;
+	font-size:18px;
+	font-weight:bold;
+	border-radius: 15px;
+	background-color: rgba(136, 110, 255, 0.2);
+	border: solid black;
+}
+
+.submitbutton:hover {
+	cursor:pointer;
+	background-color: rgb(136, 110, 255);
+	transition:2s ease;
+}
+
+.team-logo {
+	width:50px;
+}
+
+.successtext {
+	text-align: center;
+	color:white;
+	font-family: Tahoma;
+}
+
+#loading-circle {
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color: rgba(255, 255, 255, 0.5);
+	display: none;
+	z-index: 1000;
+}
+
+#loader {
+	border: 16px solid #f3f3f3;
+	border-top: 16px solid white;
+	border:50%;
+	width:120px;
+	height:120px;
+	animation: spin 2s linear infinite;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -60px;
+	margin-left: -60px;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.match-container {
+	display:flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom:40px;
+	font-family: Tahoma;
+	font-weight: bold;
+}
+
+.teampics, .teaminfo {
+	flex:1;
+	display:flex;
+	text-align: center;
+}
+
+.teampics {
+    flex: 1; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right:350px;
+}
+
+.teaminfo{
+	margin-left:350px;
+}
+
+.v {
+	margin:0;
+}
+
+.dropdownLabeller {
+	display:flex;
+	align-items: baseline;
+}
+
+.v-container {
+	display:flex;
+	align-items:center;
+	margin-top:75px;
+}
+
+.biggerCaps {
+	font-size:14px;
+}
+
+.smallerCaps {
+	font-size:12px;
+}
+
+.dropdown-container {
+	margin-top:10px;
+	position: relative;
+	display: inline-block;
+	width: 90px;
+	margin-top:40px;
+}
+
+.dropdown-container select option:hover {
+	background-color:#59328E;
+}
+
+.middle {
+	width:10%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	margin:0 10px;
+}
+
+
+.login-form {
+	text-align:center;
+	font-family: Tahoma;
+	font-size: 16px;
+}
+
+.login-button {
+	font-family: Tahoma;
+}
+
+
